@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hidden Signals</title>
+  <meta
+    name="description"
+    content="A high-end personal web demo for a computer vision researcher, centered on camouflaged object detection, constrained test-time adjustment, and perception-inspired interaction."
+  >
+  <link rel="stylesheet" href="./styles.css?v=quick-contact-2">
+</head>
+<body>
+  <div class="noise-overlay" aria-hidden="true"></div>
+  <div class="cursor-shell" id="cursorShell" aria-hidden="true">
+    <span class="cursor-orbit"></span>
+    <span class="cursor-dot"></span>
+    <span class="cursor-axis cursor-axis-x"></span>
+    <span class="cursor-axis cursor-axis-y"></span>
+    <span class="cursor-label" id="cursorLabel">Inspect</span>
+  </div>
+  <canvas class="perception-canvas" id="perceptionCanvas" aria-hidden="true"></canvas>
+
+  <header class="site-header">
+    <a class="brand" href="#top" data-cursor="Top">Hidden Signals</a>
+    <div class="top-contact-links" aria-label="Quick contact links">
+      <a class="contact-mail" href="mailto:1198383781w@gmail.com" data-cursor="Mail">1198383781w@gmail.com</a>
+      <a class="contact-github" href="https://github.com/wang-xinchun" target="_blank" rel="noreferrer" data-cursor="GitHub">GitHub</a>
+    </div>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <a href="#research" data-cursor="Jump">Research</a>
+      <a href="#paper" data-cursor="Open">Paper</a>
+      <a href="#achievements" data-cursor="Proof">Achievements</a>
+      <a href="#experiments" data-cursor="Live">Experiments</a>
+      <a href="#contact" data-cursor="Reach">Contact</a>
+    </nav>
+  </header>
+
+  <aside class="site-page-rail" aria-label="Website section index">
+    <span class="rail-kicker">Index</span>
+    <strong id="pageRailNumber">01</strong>
+    <span class="rail-line" aria-hidden="true"></span>
+    <a class="rail-node is-active" href="#hero" data-rail-target="hero" data-rail-page="01" data-cursor="Home">
+      <i></i>
+      <em>Home</em>
+    </a>
+    <a class="rail-node" href="#research" data-rail-target="research" data-rail-page="02" data-cursor="Thesis">
+      <i></i>
+      <em>Thesis</em>
+    </a>
+    <a class="rail-node" href="#paper" data-rail-target="paper" data-rail-page="03" data-cursor="Paper">
+      <i></i>
+      <em>Paper</em>
+    </a>
+    <a class="rail-node" href="#achievements" data-rail-target="achievements" data-rail-page="04" data-cursor="Proof">
+      <i></i>
+      <em>Achieve</em>
+    </a>
+    <a class="rail-node" href="#experiments" data-rail-target="experiments" data-rail-page="05" data-cursor="3D">
+      <i></i>
+      <em>3D</em>
+    </a>
+    <a class="rail-node" href="#timeline" data-rail-target="timeline" data-rail-page="06" data-cursor="Time">
+      <i></i>
+      <em>Time</em>
+    </a>
+    <a class="rail-node" href="#contact" data-rail-target="contact" data-rail-page="07" data-cursor="Reach">
+      <i></i>
+      <em>Contact</em>
+    </a>
+    <span class="rail-seal">WEB</span>
+  </aside>
+
+  <main id="top">
+    <section class="hero section-shell" id="hero">
+      <div class="hero-persona" data-cursor="Reveal" aria-label="Personal avatar preview">
+        <img src="./assets/avatar-xinchun.png" alt="Personal illustrated image of Xinchun Wang">
+        <div class="persona-card-copy" aria-hidden="true">
+          <span>本人头像</span>
+          <strong>鼠标放置此处查看</strong>
+          <em>Hover to reveal</em>
+        </div>
+      </div>
+
+      <div class="hero-grid">
+        <div class="hero-copy reveal">
+          <p class="eyebrow">Second-Year Undergraduate / Shandong Normal University / Computer Science</p>
+          <h1>
+            Xinchun Wang
+            <span>王新春 · Building efficient and reliable vision systems from undergraduate research.</span>
+          </h1>
+          <p class="hero-text">
+            I am a <strong>second-year undergraduate</strong> in Computer Science and Technology at
+            <strong>Shandong Normal University</strong>, working across computer vision, COD, remote sensing
+            super-resolution, and reliable lightweight perception. My current record includes
+            <strong>two first-author SCI manuscripts under review</strong>, one
+            <strong>published IEEE TGRS SCI Q1 paper</strong> as third author, and an active
+            <strong>Huawei Spark Award enterprise challenge</strong> on 3D SBS video synthesis.
+          </p>
+          <div class="hero-credentials" aria-label="Research achievements">
+            <span>
+              <strong>KBS SCI Q1</strong>
+              <em>First author</em>
+              <small>Under review</small>
+            </span>
+            <span>
+              <strong>Neurocomputing SCI Q2</strong>
+              <em>First author</em>
+              <small>Under review</small>
+            </span>
+            <span>
+              <strong>IEEE TGRS SCI Q1</strong>
+              <em>Third author</em>
+              <small>Published</small>
+            </span>
+          </div>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#achievements" data-cursor="Open">View Achievements</a>
+            <a class="button button-secondary" href="#paper" data-cursor="Paper">Read Research</a>
+          </div>
+        </div>
+
+        <div class="hero-panel reveal interactive-card interactive-panel" data-card-style="glass">
+          <div class="hero-panel-header">
+            <span>Academic Snapshot</span>
+            <span id="stageLabel">Stage 01 / Reliable Vision</span>
+          </div>
+          <div class="hero-panel-body">
+            <div class="metric-card metric-card-identity interactive-card" data-card-style="metric">
+              <span class="metric-mark">02</span>
+              <span class="metric-label">Identity</span>
+              <strong>Second-year CS undergraduate</strong>
+              <em>Computer Science & Technology</em>
+            </div>
+            <div class="metric-card metric-card-institution interactive-card" data-card-style="metric">
+              <span class="metric-seal" aria-hidden="true"></span>
+              <span class="metric-mark">SDNU</span>
+              <span class="metric-label">Institution</span>
+              <strong>Shandong Normal University</strong>
+              <em>山东师范大学</em>
+            </div>
+            <div class="metric-card metric-card-submission interactive-card" data-card-style="metric">
+              <span class="metric-mark">1st</span>
+              <span class="metric-label">First-author work</span>
+              <div class="submission-track" aria-label="First-author manuscripts">
+                <span>
+                  <b>KBS</b>
+                  <small>SCI Q1 / under review</small>
+                </span>
+                <span>
+                  <b>Neurocomputing</b>
+                  <small>SCI Q2 / under review</small>
+                </span>
+              </div>
+              <em>Two first-author manuscripts in reliable vision and lightweight remote sensing SR.</em>
+            </div>
+            <div class="metric-card metric-card-wide metric-card-published interactive-card" data-card-style="metric-wide">
+              <span class="metric-mark">TGRS</span>
+              <span class="metric-label">Published achievement</span>
+              <strong>IEEE TGRS SCI Q1 paper published as third author, alongside ongoing first-author submissions in reliable vision and remote sensing SR.</strong>
+              <em>Published / SCI Q1 / Third author</em>
+            </div>
+            <div class="metric-card metric-card-wide metric-card-spark interactive-card" data-card-style="metric-wide">
+              <div class="spark-heading">
+                <span class="huawei-badge" aria-label="Huawei">
+                  <img class="huawei-logo" src="./assets/logo-huawei.png" alt="Huawei">
+                </span>
+                <span class="metric-label">Now tackling</span>
+              </div>
+              <span class="metric-mark">3D</span>
+              <strong>Huawei enterprise challenge for the Spark Award: 3D SBS video synthesis.</strong>
+              <em>Engineering-focused visual generation / side-by-side stereo video / enterprise problem solving</em>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="narrative section-shell" id="research">
+      <div class="section-head reveal">
+        <p class="eyebrow">Research Thesis</p>
+        <h2>My work asks one question: how can vision systems stay reliable when the visual signal is weak?</h2>
+        <p class="section-summary">
+          This page is the bridge between my identity and my papers. It explains the common logic behind COD,
+          remote sensing super-resolution, TGRS publication work, and the Huawei Spark Award challenge: make visual
+          systems robust, efficient, and useful under real constraints.
+        </p>
+      </div>
+
+      <div class="research-thesis-card reveal interactive-card" data-cursor="Thesis" data-card-style="glass">
+        <span>Core Position</span>
+        <strong>Reliable perception is not just about stronger models. It is about knowing when, where, and how much a vision system should adjust.</strong>
+      </div>
+
+      <div class="story-grid">
+        <article class="story-card reveal interactive-card" data-stage="0" data-cursor="Focus" data-card-style="story">
+          <span class="story-index">01</span>
+          <h3>Problem: Weak Signals</h3>
+          <p>
+            Many visual tasks fail when useful cues are faint: camouflaged objects blend into the background, remote
+            sensing images lose fine structure, and generated stereo videos must preserve geometric consistency.
+          </p>
+          <div class="story-tags">
+            <span>COD</span>
+            <span>RSISR</span>
+            <span>3D Video</span>
+          </div>
+        </article>
+
+        <article class="story-card reveal interactive-card" data-stage="1" data-cursor="Focus" data-card-style="story">
+          <span class="story-index">02</span>
+          <h3>Principle: Controlled Adjustment</h3>
+          <p>
+            My first-author work focuses on constrained and efficient correction: CTTA protects already-correct
+            predictions, while DABit-Mamba pursues lightweight reconstruction under degradation.
+          </p>
+          <div class="story-tags">
+            <span>CTTA</span>
+            <span>DABit-Mamba</span>
+            <span>KBS Q1</span>
+          </div>
+        </article>
+
+        <article class="story-card reveal interactive-card" data-stage="2" data-cursor="Focus" data-card-style="story">
+          <span class="story-index">03</span>
+          <h3>Evidence: Publication Track</h3>
+          <p>
+            The research direction is supported by concrete progress: two first-author SCI manuscripts under review
+            and a published IEEE TGRS SCI Q1 paper as third author.
+          </p>
+          <div class="story-tags">
+            <span>First Author</span>
+            <span>IEEE TGRS</span>
+            <span>Published</span>
+          </div>
+        </article>
+
+        <article class="story-card reveal interactive-card" data-stage="3" data-cursor="Focus" data-card-style="story">
+          <span class="story-index">04</span>
+          <h3>Frontier: Enterprise 3D</h3>
+          <p>
+            The Huawei Spark Award enterprise problem pushes this thesis into application: 3D SBS video synthesis
+            requires reliable visual generation, stereo consistency, and engineering feasibility.
+          </p>
+          <div class="story-tags">
+            <span>Huawei</span>
+            <span>Spark Award</span>
+            <span>3D SBS</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="paper section-shell" id="paper">
+      <div class="section-head reveal">
+        <p class="eyebrow">Representative First-Author Work</p>
+        <h2>Turning the research thesis into a concrete method, benchmark, and manuscript.</h2>
+        <p class="section-summary">
+          This page explains why CTTA is my representative first-author work: it starts from a real failure mode,
+          proposes a bounded correction mechanism, and verifies the gain under explicit comparison constraints.
+        </p>
+      </div>
+
+      <div class="paper-stage reveal">
+        <div class="paper-meta">
+          <p class="paper-tag">KBS SCI Q1 Submission / First Author / COD</p>
+          <h3>Constrained Test-Time Adjustment for Camouflaged Object Detection</h3>
+          <p class="paper-summary">
+            CTTA studies how to improve camouflaged object detection under open-world test conditions without updating
+            model parameters. The key idea is to adjust only where correction is needed, while preserving predictions
+            that are already correct.
+          </p>
+          <div class="paper-logic">
+            <div>
+              <span>Problem</span>
+              <strong>Open-world COD can improve hard cases but damage already-correct samples.</strong>
+            </div>
+            <div>
+              <span>Method</span>
+              <strong>ARC anchors output correction, HBR allocates risk, and DMEP verifies fair attribution.</strong>
+            </div>
+            <div>
+              <span>Evidence</span>
+              <strong>Regression on low-difficulty cases drops from 28.8% to 13.3% under frozen parameters.</strong>
+            </div>
+          </div>
+          <div class="paper-highlights">
+            <span>CTTA</span>
+            <span>Camouflaged Object Detection</span>
+            <span>Test-Time Output Adjustment</span>
+            <span>Open-World Stability</span>
+          </div>
+          <div class="paper-links">
+            <a class="button button-primary" href="./assets/paper-preview-kbs.png" target="_blank" rel="noreferrer" data-cursor="Preview">First-page preview</a>
+            <a class="button button-secondary" href="#achievements" data-cursor="Inspect">All Achievements</a>
+          </div>
+        </div>
+
+        <div class="paper-right-stack">
+          <div class="paper-evidence-panel interactive-card" data-cursor="Metrics" data-card-style="evidence">
+            <div class="evidence-head">
+              <span>Performance Evidence</span>
+              <strong>Table 1 + Table 2</strong>
+            </div>
+
+            <div class="evidence-hero">
+              <div>
+                <span>mean_ds Fwβ</span>
+                <strong>0.8994</strong>
+                <em>+0.0034 vs baseline</em>
+              </div>
+              <div>
+                <span>mean_ds MAE</span>
+                <strong>0.0153</strong>
+                <em>lower is better</em>
+              </div>
+              <div class="evidence-hero-wide">
+                <span>Low-difficulty regression</span>
+                <strong>28.8% -> 13.3%</strong>
+                <em>already-correct samples are better protected</em>
+              </div>
+            </div>
+
+            <div class="evidence-table-wrap">
+              <table class="evidence-table">
+                <thead>
+                  <tr>
+                    <th>Dataset</th>
+                    <th>Baseline</th>
+                    <th>CTTA</th>
+                    <th>ΔFwβ</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>CHAMELEON</td>
+                    <td>0.9053 / 0.0121</td>
+                    <td>0.9072 / 0.0118</td>
+                    <td>+0.0019</td>
+                  </tr>
+                  <tr>
+                    <td>CAMO</td>
+                    <td>0.8998 / 0.0236</td>
+                    <td>0.9045 / 0.0228</td>
+                    <td>+0.0047</td>
+                  </tr>
+                  <tr>
+                    <td>COD10K</td>
+                    <td>0.8716 / 0.0110</td>
+                    <td>0.8757 / 0.0107</td>
+                    <td>+0.0041</td>
+                  </tr>
+                  <tr>
+                    <td>NC4K</td>
+                    <td>0.9071 / 0.0160</td>
+                    <td>0.9103 / 0.0158</td>
+                    <td>+0.0032</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="evidence-note">
+              <span>Matched comparisons</span>
+              <p>Under matched compute and matched adjustment, CTTA keeps the same 13.3% low-difficulty regression rate while preserving positive high-difficulty gains.</p>
+            </div>
+          </div>
+
+          <div class="paper-method-panel interactive-card" data-cursor="Protocol" data-card-style="evidence">
+            <div class="method-panel-head">
+              <span>Method Guardrails</span>
+              <strong>ARC -> HBR -> DMEP</strong>
+            </div>
+            <div class="method-track">
+              <div>
+                <span>ARC</span>
+                <strong>Anchor reliable outputs</strong>
+                <em>locks in confident mask structure before adjustment</em>
+              </div>
+              <div>
+                <span>HBR</span>
+                <strong>Route high-risk cases</strong>
+                <em>spends correction budget where uncertainty is useful</em>
+              </div>
+              <div>
+                <span>DMEP</span>
+                <strong>Verify attribution</strong>
+                <em>keeps gains tied to the proposed correction path</em>
+              </div>
+            </div>
+            <div class="method-footer">
+              <span>Frozen parameters</span>
+              <span>Output-space adjustment</span>
+              <span>Regression-aware evaluation</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="achievements section-shell" id="achievements">
+      <div class="section-head reveal">
+        <p class="eyebrow">Personal Achievements</p>
+        <h2>Three research milestones across reliable perception, remote sensing, and lightweight vision.</h2>
+      </div>
+
+      <div class="achievement-grid">
+        <article class="achievement-card reveal interactive-card" data-cursor="Paper" data-card-style="achievement">
+          <div class="achievement-topline">
+            <span>KBS SCI Q1</span>
+            <span>First author</span>
+          </div>
+          <h3>Constrained Test-Time Adjustment for Camouflaged Object Detection</h3>
+          <p>
+            A constrained output-space adjustment framework for camouflaged object detection, designed to improve hard
+            cases while protecting already-correct predictions under frozen model parameters.
+          </p>
+          <div class="achievement-tags">
+            <span>CTTA</span>
+            <span>ARC</span>
+            <span>HBR</span>
+            <span>DMEP</span>
+          </div>
+          <div class="achievement-metrics">
+            <span>First-author manuscript under review</span>
+            <strong>CTTA for COD / 28.8% -> 13.3%</strong>
+          </div>
+          <a class="achievement-link" href="./assets/paper-preview-kbs.png" target="_blank" rel="noreferrer" data-cursor="Preview">
+            First page only
+          </a>
+        </article>
+
+        <article class="achievement-card reveal interactive-card achievement-card-accent" data-cursor="Paper" data-card-style="achievement">
+          <div class="achievement-topline">
+            <span>Neurocomputing SCI Q2</span>
+            <span>First author</span>
+          </div>
+          <h3>DABit-Mamba: Degradation-Aware Bit-Scalable Mamba for Lightweight Remote Sensing Image Super-Resolution</h3>
+          <p>
+            A lightweight remote sensing image super-resolution network that combines bit-scalable Mamba blocks with a
+            degradation-aware branch to balance reconstruction quality, robustness, and deployment efficiency.
+          </p>
+          <div class="achievement-tags">
+            <span>Mamba</span>
+            <span>BitConv</span>
+            <span>BitLinear</span>
+            <span>Remote Sensing SR</span>
+          </div>
+          <div class="achievement-metrics">
+            <span>First-author manuscript under review / UCMerced / RSSCN7 / RSD46 / AID</span>
+            <strong>78.3K params / 10.1 ms</strong>
+          </div>
+          <a class="achievement-link" href="./assets/paper-preview-neurocomputing.png" target="_blank" rel="noreferrer" data-cursor="Preview">
+            First page only
+          </a>
+        </article>
+
+        <article class="achievement-card achievement-card-wide reveal interactive-card" data-cursor="Published" data-card-style="achievement">
+          <div class="achievement-topline">
+            <span>IEEE TGRS SCI Q1</span>
+            <span>Third author</span>
+          </div>
+          <h3>Published Research in IEEE Transactions on Geoscience and Remote Sensing</h3>
+          <p>
+            A published SCI Q1 remote-sensing achievement that complements my first-author submissions and reflects
+            continuous research participation in high-level computer vision and geoscience venues.
+          </p>
+          <div class="achievement-tags">
+            <span>Published</span>
+            <span>SCI Q1</span>
+            <span>Remote Sensing</span>
+            <span>Computer Vision</span>
+          </div>
+          <div class="achievement-metrics">
+            <span>Publication status</span>
+            <strong>IEEE TGRS / SCI Q1 / Third author</strong>
+          </div>
+          <span class="achievement-link achievement-link-muted">Published paper</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="experiments section-shell" id="experiments">
+      <div class="section-head reveal">
+        <p class="eyebrow">Now Running</p>
+        <h2>Current AAAI experiments extending reliable perception beyond the training set.</h2>
+      </div>
+
+      <div class="lab-grid">
+        <article class="lab-copy reveal">
+          <p class="lab-kicker">AAAI Submission in Progress</p>
+          <h3>From hidden targets to controlled test-time behavior.</h3>
+          <p>
+            This section carries the trajectory of the paper forward: how to make perception systems stay reliable when
+            cues are weak, targets are hard, and naive correction can damage already-correct predictions.
+          </p>
+          <ul class="lab-list">
+            <li>Problem: robust visual understanding under weak cues and distribution shift</li>
+            <li>Direction: constrained correction, risk-aware allocation, and stable inference behavior</li>
+            <li>Status: AAAI-oriented model design, ablations, and evaluation protocol tuning in progress</li>
+          </ul>
+        </article>
+
+        <div class="lab-terminal reveal interactive-card interactive-panel" data-card-style="terminal">
+          <div class="terminal-head">
+            <span>lab/monitor</span>
+            <span class="terminal-status">running</span>
+          </div>
+          <div class="terminal-stream">
+            <div class="stream-row interactive-card" data-card-style="stream">
+              <span>benchmark scope</span>
+              <strong>4 sets</strong>
+            </div>
+            <div class="stream-row interactive-card" data-card-style="stream">
+              <span>parameter update</span>
+              <strong>frozen</strong>
+            </div>
+            <div class="stream-row interactive-card" data-card-style="stream">
+              <span>adjustment policy</span>
+              <strong>bounded</strong>
+            </div>
+            <div class="stream-row interactive-card" data-card-style="stream">
+              <span>next target</span>
+              <strong>AAAI</strong>
+            </div>
+          </div>
+          <div class="cluster-field" id="clusterField">
+            <span class="cluster cluster-a"></span>
+            <span class="cluster cluster-b"></span>
+            <span class="cluster cluster-c"></span>
+            <span class="cluster cluster-d"></span>
+            <span class="cluster cluster-e"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="timeline section-shell">
+      <div class="section-head reveal">
+        <p class="eyebrow">Milestones</p>
+        <h2>A research trajectory shaped by hidden-object perception and reliable test-time reasoning.</h2>
+      </div>
+
+      <div class="timeline-row reveal">
+        <div class="timeline-item interactive-card" data-cursor="Milestone" data-card-style="timeline">
+          <span class="timeline-year">Start</span>
+          <p>Entered CV research through segmentation, perception, and difficult visual scenes with weak structure.</p>
+        </div>
+        <div class="timeline-item interactive-card" data-cursor="Milestone" data-card-style="timeline">
+          <span class="timeline-year">Submissions</span>
+          <p>Prepared first-author SCI manuscripts for KBS and Neurocomputing around reliable vision and lightweight RSISR.</p>
+        </div>
+        <div class="timeline-item interactive-card" data-cursor="Milestone" data-card-style="timeline">
+          <span class="timeline-year">Now</span>
+          <p>Continuing undergraduate research after a published IEEE TGRS SCI Q1 paper as third author.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact section-shell" id="contact">
+      <div class="contact-panel reveal interactive-card interactive-panel" data-card-style="glass">
+        <p class="eyebrow">Contact</p>
+        <h2>Open to collaboration on COD, segmentation, and reliable test-time perception.</h2>
+        <p class="contact-text">
+          Reach me directly by email or GitHub for research collaboration, paper discussion, code, and future projects
+          growing out of CTTA.
+        </p>
+        <div class="contact-links">
+          <a href="mailto:1198383781w@gmail.com" data-cursor="Mail">1198383781w@gmail.com</a>
+          <a href="https://github.com/wang-xinchun" target="_blank" rel="noreferrer" data-cursor="GitHub">GitHub</a>
+          <a href="/" data-cursor="Scholar">Google Scholar</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="./script.js?v=quick-contact-2"></script>
+</body>
+</html>
